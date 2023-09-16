@@ -1,6 +1,6 @@
-import os 
-from colors import color as c 
-import validaciones as va 
+import os
+from colors import color as c
+import validaciones as va
 
 
 def Menu_home():
@@ -17,29 +17,26 @@ def Menu_home():
         Login()
     else:
         print("opcion errada")
-
+        
 def Menu_second():
     t = True
     while t:
         os.system('cls')
         print(f"\nUSER ----> {c('green',f'{va.userName}')}\n")
 
-        opMenu = input(f"{c ('yellow','1.')} JUEGO \n{c ('yellow','2.')} SIMULADOR DE CREDITO \n{c ('yellow','3.')} ORGANIZADOR DE FINANZAS \n\n{c ('yellow','Other key.')} Salir \n--> ")
+        opMenu = input(f"{c ('yellow','1.')} ALQUILAR BICICLETA \n{c ('yellow','2.')} HISTORIAL DE ALQUILER \n{c ('yellow','3.')} LISTA DE USUARIOS \n{c ('yellow','Other key.')} Salir \n--> ")
 
         if opMenu == "1":
-            from numero_mas_alto import Game
-            Game()
+            import alquiler
+            alquiler.Alquiler()
             
         elif opMenu == '2':
-            from simulador_credito import Simulador_credito
-            Simulador_credito()
-            
+            import historial
+            historial.Historial
 
         elif opMenu == "3":
-            from finanzas import Finanzas
-            Finanzas()
-        
-
+            import lista_usuarios
+            lista_usuarios.Lista_usuarios()
         else: 
             op1= input(c("red",f"{va.userName}, deseas cerrar sesion? Y/N: "))
             if op1.lower()=="y":
@@ -47,4 +44,3 @@ def Menu_second():
                 Menu_home()
             else: 
                 pass
-            
