@@ -1,7 +1,9 @@
 
-import vaimport os 
-from colors import color as clidaciones as va
+import os 
+from colors import color as c
+import validaciones as va
 import db
+import time
 
 def Registro():
     os.system('cls')
@@ -23,7 +25,8 @@ def Registro():
             if va.validar_password(psw):
                 user = {"name":name,"psw":psw}
                 db.users.append(user)
-                print(c("green","USUARIO CREADO"))
+                print(c("green","\nUSUARIO CREADO"))
+                time.sleep(2)
                 print("\n")
                 import menus
                 menus.Menu_home()
@@ -32,6 +35,7 @@ def Registro():
 
         
         if count == 3:
-            print(c("red","REGISTRO DE USUARIO CANCELADA"))
+            print(c("red","\nREGISTRO DE USUARIO CANCELADO"))
+            time.sleep(2)
             import menus
             menus.Menu_home()

@@ -24,23 +24,34 @@ def Menu_second():
         os.system('cls')
         print(f"\nUSER ----> {c('green',f'{va.userName}')}\n")
 
-        opMenu = input(f"{c ('yellow','1.')} ALQUILAR BICICLETA \n{c ('yellow','2.')} HISTORIAL DE ALQUILER \n{c ('yellow','3.')} LISTA DE USUARIOS \n{c ('yellow','Other key.')} Salir \n--> ")
+        opMenu = input(f"{c ('yellow','1.')} ALQUILAR BICICLETA \n{c ('yellow','2.')} HISTORIAL DE ALQUILER \n{c ('yellow','3.')} LISTA DE USUARIOS \n{c ('yellow','4.')} LISTA DE BICICLETAS' \n{c ('yellow','Other key.')} Salir \n--> ")
 
         if opMenu == "1":
             import alquiler
             alquiler.Alquiler()
+
+        # elif opMenu == "2":
+        #     import devolucion
+        #     devolucion.Devolucion()
             
         elif opMenu == '2':
             import historial
-            historial.Historial
+            historial.Historial()
 
         elif opMenu == "3":
             import lista_usuarios
             lista_usuarios.Lista_usuarios()
+
+        elif opMenu == "4":
+            import lista_bicicletas
+            lista_bicicletas.Lista_bicicletas()
+
         else: 
             op1= input(c("red",f"{va.userName}, deseas cerrar sesion? Y/N: "))
             if op1.lower()=="y":
+                os.system('cls')
                 va.userName = ""
                 Menu_home()
             else: 
+                os.system('cls')
                 pass

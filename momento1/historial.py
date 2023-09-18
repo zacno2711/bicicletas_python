@@ -8,17 +8,16 @@ def Historial():
     os.system('cls')
 
     if len(db.h_alquiler) != 0:
+        print(c("green","HISTORIAL DE ALQUILER\n"))
         for h in db.h_alquiler:
-            print(f" usuario : {va.userName}\n id bicileta : {h.data_bicicleta.id}\n color : {h.data_bicicleta.color}\n partida : {h.partida}\n destino : {h.destino}")
-            print("_"*50)
+            print(c("yellow","usuario : ")+f"{h['user']}\n"+c("yellow","id bicileta : ")+f"{h['id_bicicleta']}\n"+c("yellow","color : ")+f"{h['color']}\n"+c("yellow","partida : ")+f"{h['partida']}\n"+c("yellow","destino : ")+f"{h['destino']}")
+            print(c("green","_"*30))
             
-            salir = input("salir (presione enter)")
+        input(c("red","salir (presione enter)"))
+        os.system('cls')
+        import menus
+        menus.Menu_second
             
-            if salir != None:
-                os.system('cls')
-                import menus
-                menus.Menu_second
-                
     else:
         print(c("red","no hay historial de bicicletas alquiladas"))
         time.sleep(3)

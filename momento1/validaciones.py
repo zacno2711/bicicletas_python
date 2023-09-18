@@ -2,29 +2,24 @@ import db
 import re
 from colors import color as c
 
-def validar_nombre (name, users):
-    bol = False
-    if not validar_usuario_name(name, users):
-        bol = True
-    else:
-        print(c("red","usuario registrado"))
-        bol = False
-    if bol:
-        return True
-    else:
-        return False
     
-
-    
-def validar_usuario_name(name,users):
-    bol = False
-    for x in users:
-        if name == x["name"]:
-            bol = True
-    if bol:
+def validar_user(name,users):
+    for user in users:
+        if user["name"] == name:
+            return user
+        
+        
+def validar_nombre(name):
+    if len(name)<3:
+        print(c("red","Minimo 3 caracteres"))
         return True
-    else:
-        return False
+    else :
+        user =  validar_user(name,db.users)
+        if user != None:
+            print(c("red","Nombre de usuario ya existe, intente con otro"))
+            return True
+        else:
+            return False
 
 def validar_password(psw):
     if len(psw) >= 5:
@@ -39,15 +34,18 @@ def validar_password(psw):
         return False
     
 def validar_bicicleta(op):
-    bol = False
-    for x in db.users:
-        if op == x["id"]:
-            bol = True
-    if bol == False:
-        return False
-    else:
-        return x
+    for x in db.bicicletas:
+        if x["id"] == int(op):
+            return x
 
-        
+def validar_bicicleta_estado ():
+    for b in db.bicicletas:
+        if b["estado"]==False:
+            return True
     
+def buscar_indice(id,lista): 
+    for index, diccionario in enumerate(lista):
+        if diccionario.get("id") == id:
+            return index     
+ 
 userName = ""
