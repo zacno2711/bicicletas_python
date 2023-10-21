@@ -1,16 +1,18 @@
-from colorama import  Fore, Style
+from colorama import Fore, Style
 
-def color(color,obj):
-    try:
-        if color == "green":
-            return f"{Fore.LIGHTGREEN_EX}{obj}{Style.RESET_ALL}"
-        elif color == "red":
-            return f"{Fore.LIGHTRED_EX}{obj}{Style.RESET_ALL}"
-        elif color == "yellow":
-            return f"{Fore.LIGHTYELLOW_EX}{obj}{Style.RESET_ALL}"
-        elif color == "cyan":
-            return f"{Fore.LIGHTCYAN_EX}{obj}{Style.RESET_ALL}"
-        elif color == "white":
-            return f"{Fore.LIGHTWHITE_EX}{obj}{Style.RESET_ALL}"
-    except ValueError as e:
-        print (f"error de conversion = {e}")
+# Definir un diccionario de colores
+COLORS = {
+    "green": Fore.LIGHTGREEN_EX,
+    "red": Fore.LIGHTRED_EX,
+    "yellow": Fore.LIGHTYELLOW_EX,
+    "cyan": Fore.LIGHTCYAN_EX,
+    "white": Fore.LIGHTWHITE_EX,
+}
+
+def color(color_name, obj):
+    # Verificar si el color_name es válido
+    if color_name in COLORS:
+        return f"{COLORS[color_name]}{obj}{Style.RESET_ALL}"
+    else:
+        # Devolver el objeto sin formato si el color no es válido
+        return obj

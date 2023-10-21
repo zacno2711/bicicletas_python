@@ -10,7 +10,8 @@ def validar_user(name,users):
         
         
 def validar_nombre(name):
-    if len(name)<3:
+    validar = lambda name: len(name) < 3
+    if validar(name):
         print(c("red","Minimo 3 caracteres"))
         return True
     else :
@@ -22,9 +23,10 @@ def validar_nombre(name):
             return False
 
 def validar_password(psw):
-    if len(psw) >= 5:
-        patron = r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$'
-        if re.match(patron, psw):
+    validar = lambda psw : len(psw) >= 5
+    validar_psw = lambda psw : re.match(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$', psw) is not None
+    if validar(psw):
+        if validar_psw(psw):
             return True
         else:
             print(c("red","- Debe contener al menos una letra mayúscula o minúscula. \n- Debe contener al menos un dígito numérico.")) 
